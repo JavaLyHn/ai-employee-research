@@ -325,6 +325,30 @@ export const products: Product[] = [
     category: "agent",
     reportPath: "dumate-cn",
   },
+  {
+    id: "helio",
+    index: 25,
+    name: "Helio",
+    positioning: "AI 原生协作工作台（人与 AI 同事共用频道、工单与状态）",
+    url: "https://www.helio.im/",
+    access: "application",
+    status: "completed",
+    category: "agent",
+    note: "自带频道 / 任务板 / 邮件 / 会议的独立工作区，从工程研发与事故响应场景切入",
+    reportPath: "helio-im",
+  },
+  {
+    id: "omniwork",
+    index: 26,
+    name: "OmniWork",
+    positioning: "面向创意工作的 Agent OS（一句目标自动跑到成品）",
+    url: "https://www.omniwork.ai/",
+    access: "application",
+    status: "completed",
+    category: "creative",
+    note: "专家市场 + Omni 编排器，目前仅深入演示社媒涨粉一个场景，邀请码门控",
+    reportPath: "omniwork-ai",
+  },
 ];
 
 export const stats = {

@@ -63,11 +63,12 @@ sage-research/
 │   ├── 表格.md
 │   └── _competitors_summary.md
 ├── public/
-│   └── products/                   # 📁 16 款产品的报告(线上可访问,Vercel 静态托管)
-│       ├── 01-artisan-co/
+│   └── products/                   # 📁 26 款产品的报告(线上可访问,Vercel 静态托管)
+│       ├── artisan-co/
 │       │   ├── report.md
-│       │   └── report.html         # HTML 已内联截图,~5-16MB/份
-│       └── 02-kuse-ai/ ... 16-theaicmo-com/
+│       │   ├── report.html         # HTML 已内联截图,~5-16MB/份
+│       │   └── figs/               # report.md 前端渲染时引用的截图
+│       └── kuse-ai/ ... omniwork-ai/
 └── AGENTS.md                       # 本文件
 ```
 
@@ -141,6 +142,11 @@ sage-research/
 
 > 每次有意义的变更合并到 main 时追加。**最新在上**。
 > 日期 YYYY-MM-DD;作者用中文名;类型 `feat` 新增 / `fix` 修复 / `docs` 文档 / `refactor` 重构 / `chore` 杂项 / `style` 样式
+
+### 2026-06-10 · 何龙
+- feat: 补齐最后 2 款产品 Helio(25) + OmniWork(26)— 这两款未登记在 `表格.md`,但 audits 已有完整报告。报告(md+html+figs)迁入 `public/products/`,products.ts 追加 2 条,凑齐 26 款全集
+- fix: `Overview.tsx` 覆盖数从写死的「16 款」改为动态绑定 `products.length`
+- docs: AGENTS.md 目录结构计数 16 → 26,reportPath 去掉数字前缀并补 `figs/` 说明
 
 ### 2026-05-25 · 何龙
 - feat: 初始化项目,Next.js 16 + Tailwind v4,接入 Vercel
