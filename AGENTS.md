@@ -161,7 +161,7 @@ sage-research/
 - refactor: 删除产品编辑功能 / 横向滚动 Marquee / 方法论独立入口,简化为新增 + 删除 + 拖动排序
 - feat: 接通「查看报告」按钮 — audits/* 迁到 `public/products/`,链接到 `/products/{reportPath}/report.html`,新标签页打开
 - chore: 品牌重命名 — `AI Employee Research` → `Sage Research`,域名/仓库/Vercel 项目/本地目录全部从 `ai-employee-research` 改为 `sage-research`。localStorage key 也迁移,旧 key 数据自动转移
-
+- feat: 补录 8 款产品(17-24)— Kore.ai / Pylon / Dust / Fin / 马维斯 Marvis / CodeBuddy / QClaw / Dumate,均含完整报告。报告从误放的顶层 `products/` 迁回 `public/products/`,products.ts 追加 8 条(定位/官网/类别/访问均据实测填写,access 取自页面真实入口信号)
 <!--
 追加模板(复制下面这段到「迭代日志」标题下方,删除注释包裹):
 
