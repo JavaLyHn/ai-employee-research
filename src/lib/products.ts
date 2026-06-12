@@ -6,6 +6,7 @@ export type ProductCategory =
   | "creative"
   | "data";
 export type AccessType = "open" | "freemium" | "application" | "sales";
+export type ClientType = "web" | "desktop" | "mobile" | "cross";
 
 export interface Product {
   id: string;
@@ -14,6 +15,7 @@ export interface Product {
   positioning: string;
   url: string;
   access: AccessType;
+  client: ClientType;
   owner?: string;
   status: ProductStatus;
   category: ProductCategory;
@@ -41,6 +43,15 @@ export const ACCESS_LABEL: Record<AccessType, string> = {
   sales: "联系销售",
 };
 
+// 客户端类型:产品在哪些端可用。
+// web 纯网页 / desktop 含桌面客户端(IDE、本地 Agent 等) / mobile 主打手机 / cross 网页+桌面+移动全覆盖
+export const CLIENT_LABEL: Record<ClientType, string> = {
+  web: "云端",
+  desktop: "桌面端",
+  mobile: "移动端",
+  cross: "全平台",
+};
+
 export const products: Product[] = [
   {
     id: "artisan",
@@ -49,6 +60,7 @@ export const products: Product[] = [
     positioning: "AI 销售员工（AI BDR）",
     url: "https://www.artisan.co/",
     access: "application",
+    client: "web",
     owner: "倩倩",
     status: "completed",
     category: "sales",
@@ -61,6 +73,7 @@ export const products: Product[] = [
     positioning: "AI GTM / AI Sales Automation",
     url: "https://www.kuse.ai/",
     access: "open",
+    client: "web",
     owner: "倩倩",
     status: "completed",
     category: "agent",
@@ -73,6 +86,7 @@ export const products: Product[] = [
     positioning: "AI 数字员工 / 协作型 Agent",
     url: "https://junior.so/",
     access: "application",
+    client: "web",
     status: "completed",
     category: "agent",
     note: "与 Kuse 同公司：Kuse 是系统，Junior 是人格化 AI 员工",
@@ -85,6 +99,7 @@ export const products: Product[] = [
     positioning: "AI Marketing Agent Suite",
     url: "https://okara.ai/",
     access: "open",
+    client: "web",
     owner: "倩倩",
     status: "in-progress",
     category: "marketing",
@@ -97,6 +112,7 @@ export const products: Product[] = [
     positioning: "AI 客户互动 / AI 协作",
     url: "https://moxt.ai/zh-CN",
     access: "freemium",
+    client: "web",
     owner: "倩倩",
     status: "completed",
     category: "agent",
@@ -109,6 +125,7 @@ export const products: Product[] = [
     positioning: "企业协作 + AI Workflow 平台",
     url: "https://monday.com/w/agents",
     access: "freemium",
+    client: "cross",
     owner: "何龙",
     status: "completed",
     category: "agent",
@@ -121,6 +138,7 @@ export const products: Product[] = [
     positioning: "AI 营销内容平台",
     url: "https://www.jasper.ai/",
     access: "freemium",
+    client: "web",
     owner: "何龙",
     status: "completed",
     category: "marketing",
@@ -133,6 +151,7 @@ export const products: Product[] = [
     positioning: "AI 视频生成",
     url: "https://pika.art/",
     access: "open",
+    client: "web",
     owner: "何龙",
     status: "completed",
     category: "creative",
@@ -145,6 +164,7 @@ export const products: Product[] = [
     positioning: "通用 Multi-Agent AI 平台",
     url: "https://relevanceai.com/",
     access: "freemium",
+    client: "web",
     owner: "何龙",
     status: "completed",
     category: "agent",
@@ -157,6 +177,7 @@ export const products: Product[] = [
     positioning: "Crypto 信息分析平台",
     url: "https://kaito.ai/",
     access: "freemium",
+    client: "web",
     owner: "何龙",
     status: "completed",
     category: "data",
@@ -169,6 +190,7 @@ export const products: Product[] = [
     positioning: "AI Agent / 企业自动化",
     url: "https://www.serus.io/",
     access: "sales",
+    client: "web",
     owner: "何龙",
     status: "completed",
     category: "agent",
@@ -181,6 +203,7 @@ export const products: Product[] = [
     positioning: "AI 销售员工（AI SDR / AI 电话销售）",
     url: "https://www.11x.ai/",
     access: "sales",
+    client: "web",
     owner: "何龙",
     status: "completed",
     category: "sales",
@@ -193,6 +216,7 @@ export const products: Product[] = [
     positioning: "Web3 营销代理公司",
     url: "https://www.lunarstrategy.com/",
     access: "sales",
+    client: "web",
     owner: "何龙",
     status: "completed",
     category: "marketing",
@@ -205,6 +229,7 @@ export const products: Product[] = [
     positioning: "海外社媒管理工具",
     url: "https://onesight.com/",
     access: "application",
+    client: "web",
     owner: "何龙",
     status: "completed",
     category: "marketing",
@@ -217,6 +242,7 @@ export const products: Product[] = [
     positioning: "AI 出海团队 / Global Expansion Team Platform",
     url: "https://www.octok.com/",
     access: "application",
+    client: "web",
     status: "completed",
     category: "agent",
     note: "6 个具名 AI 角色(Navigator/Alice/Sophia/William/Daniel/Ethan)对应出海公司组织架构",
@@ -229,6 +255,7 @@ export const products: Product[] = [
     positioning: "AI 营销 Agent / 自主跑 Campaign",
     url: "https://theaicmo.com/",
     access: "open",
+    client: "web",
     status: "completed",
     category: "marketing",
     note: "plans strategy → writes assets → publishes → learns,定位 agent 而非 prompt 工具",
@@ -241,6 +268,7 @@ export const products: Product[] = [
     positioning: "企业级 Agentic AI 平台（客服 + 员工提效）",
     url: "https://www.kore.ai/",
     access: "sales",
+    client: "web",
     status: "completed",
     category: "agent",
     reportPath: "kore-ai",
@@ -252,6 +280,7 @@ export const products: Product[] = [
     positioning: "AI 原生 B2B 客户支持平台",
     url: "https://www.usepylon.com/",
     access: "freemium",
+    client: "web",
     status: "completed",
     category: "agent",
     reportPath: "usepylon-com",
@@ -263,8 +292,10 @@ export const products: Product[] = [
     positioning: "企业多 Agent 协作平台（按岗位命名、可接力）",
     url: "https://dust.tt/",
     access: "freemium",
+    client: "web",
     status: "completed",
     category: "agent",
+    note: "Web 端为主,另有浏览器扩展",
     reportPath: "dust-tt",
   },
   {
@@ -274,6 +305,7 @@ export const products: Product[] = [
     positioning: "AI 客服 Agent（端到端处理工单，Intercom 旗下）",
     url: "https://fin.ai/",
     access: "freemium",
+    client: "web",
     status: "completed",
     category: "agent",
     reportPath: "fin-ai",
@@ -285,9 +317,10 @@ export const products: Product[] = [
     positioning: "执行型 AI 助手（24h 在线、会动手干活）",
     url: "https://marvis.qq.com/",
     access: "application",
+    client: "cross",
     status: "completed",
     category: "agent",
-    note: "腾讯系，内测中",
+    note: "腾讯系，内测中；Windows / macOS / Android / iOS 四端",
     reportPath: "marvis-qq-com",
   },
   {
@@ -297,21 +330,23 @@ export const products: Product[] = [
     positioning: "AI 编程 Agent（自主规划执行、交付可验收成果）",
     url: "https://www.codebuddy.cn/work/",
     access: "freemium",
+    client: "desktop",
     status: "completed",
     category: "agent",
-    note: "腾讯系",
+    note: "腾讯系；VS Code / JetBrains 插件 + 命令行",
     reportPath: "codebuddy-cn",
   },
   {
     id: "qclaw",
     index: 23,
     name: "QClaw",
-    positioning: "法律 AI Agent（微信指令驱动本地电脑）",
+    positioning: "通用桌面自动化 Agent（微信指令驱动本地电脑）",
     url: "https://qclaw.qq.com/",
     access: "application",
+    client: "desktop",
     status: "completed",
     category: "agent",
-    note: "腾讯系，内测中",
+    note: "腾讯系，内测中；对标开源项目 OpenClaw 的零门槛简化版",
     reportPath: "qclaw-qq-com",
   },
   {
@@ -321,8 +356,10 @@ export const products: Product[] = [
     positioning: "执行型 AI 智能体（把事做完并交付结果）",
     url: "https://www.dumate.cn/app",
     access: "freemium",
+    client: "desktop",
     status: "completed",
     category: "agent",
+    note: "需下载客户端,直接读写本地文件",
     reportPath: "dumate-cn",
   },
   {
@@ -332,9 +369,10 @@ export const products: Product[] = [
     positioning: "AI 原生协作工作台（人与 AI 同事共用频道、工单与状态）",
     url: "https://www.helio.im/",
     access: "application",
+    client: "desktop",
     status: "completed",
     category: "agent",
-    note: "自带频道 / 任务板 / 邮件 / 会议的独立工作区，从工程研发与事故响应场景切入",
+    note: "Web 端 + macOS / Windows 桌面客户端,从工程研发与事故响应场景切入",
     reportPath: "helio-im",
   },
   {
@@ -344,6 +382,7 @@ export const products: Product[] = [
     positioning: "面向创意工作的 Agent OS（一句目标自动跑到成品）",
     url: "https://www.omniwork.ai/",
     access: "application",
+    client: "web",
     status: "completed",
     category: "creative",
     note: "专家市场 + Omni 编排器，目前仅深入演示社媒涨粉一个场景，邀请码门控",

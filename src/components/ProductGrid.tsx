@@ -2,8 +2,10 @@ import Link from "next/link";
 import {
   ACCESS_LABEL,
   CATEGORY_LABEL,
+  CLIENT_LABEL,
   products,
   type AccessType,
+  type ClientType,
   type Product,
 } from "@/lib/products";
 
@@ -15,6 +17,13 @@ const ACCESS_CHIP: Record<AccessType, string> = {
     "bg-amber-50 text-amber-800 border-amber-200 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-900",
   sales:
     "bg-zinc-100 text-zinc-700 border-zinc-200 dark:bg-zinc-800/60 dark:text-zinc-300 dark:border-zinc-700",
+};
+
+const CLIENT_ICON: Record<ClientType, (props: { className?: string }) => React.ReactElement> = {
+  web: CloudIcon,
+  desktop: MonitorIcon,
+  mobile: SmartphoneIcon,
+  cross: LayersIcon,
 };
 
 function getDomain(url: string): string {
@@ -49,7 +58,7 @@ export default function ProductGrid() {
       ) : (
         <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[900px] border-separate border-spacing-0">
+            <table className="w-full min-w-[1040px] border-separate border-spacing-0">
               <thead>
                 <tr>
                   <Th className="w-14 text-center">#</Th>
@@ -57,6 +66,7 @@ export default function ProductGrid() {
                   <Th className="w-44">官网</Th>
                   <Th>定位</Th>
                   <Th className="w-28">类别</Th>
+                  <Th className="w-28">客户端</Th>
                   <Th className="w-28">访问</Th>
                   <Th className="w-36 text-right">操作</Th>
                 </tr>
@@ -94,6 +104,7 @@ function Th({
 function ProductRow({ product }: { product: Product }) {
   const reportDisabled = !product.reportPath;
   const domain = getDomain(product.url);
+  const ClientIcon = CLIENT_ICON[product.client];
 
   return (
     <tr className="group transition-colors duration-150 hover:bg-muted/40">
@@ -135,6 +146,13 @@ function ProductRow({ product }: { product: Product }) {
       <Td>
         <span className="inline-flex items-center rounded-md bg-muted px-2 py-0.5 text-xs font-medium text-secondary">
           {CATEGORY_LABEL[product.category]}
+        </span>
+      </Td>
+
+      <Td>
+        <span className="inline-flex items-center gap-1 rounded-md border border-border px-2 py-0.5 text-xs font-medium text-secondary">
+          <ClientIcon className="h-3 w-3 text-muted-foreground" />
+          {CLIENT_LABEL[product.client]}
         </span>
       </Td>
 
@@ -218,5 +236,67 @@ function ArrowRight({ className }: { className?: string }) {
     >
       <path d="M5 12h14M13 5l7 7-7 7" />
     </svg>
+  );
+}
+
+function ClientGlyph({
+  className,
+  children,
+}: {
+  className?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {children}
+    </svg>
+  );
+}
+
+// 云端:云朵
+function CloudIcon({ className }: { className?: string }) {
+  return (
+    <ClientGlyph className={className}>
+      <path d="M17.5 19a4.5 4.5 0 0 0 .5-8.97A6 6 0 0 0 6.34 11 4 4 0 0 0 7 19h10.5Z" />
+    </ClientGlyph>
+  );
+}
+
+// 桌面端:显示器
+function MonitorIcon({ className }: { className?: string }) {
+  return (
+    <ClientGlyph className={className}>
+      <rect x="3" y="4" width="18" height="12" rx="1.5" />
+      <path d="M8 20h8M12 16v4" />
+    </ClientGlyph>
+  );
+}
+
+// 移动端:手机
+function SmartphoneIcon({ className }: { className?: string }) {
+  return (
+    <ClientGlyph className={className}>
+      <rect x="6" y="2.5" width="12" height="19" rx="2.5" />
+      <path d="M11 18.5h2" />
+    </ClientGlyph>
+  );
+}
+
+// 全平台:叠层
+function LayersIcon({ className }: { className?: string }) {
+  return (
+    <ClientGlyph className={className}>
+      <path d="M12 3 3 8l9 5 9-5-9-5Z" />
+      <path d="M3 13l9 5 9-5" />
+    </ClientGlyph>
   );
 }

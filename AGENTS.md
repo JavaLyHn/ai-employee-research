@@ -101,7 +101,8 @@ sage-research/
      name: "产品名",
      positioning: "一句话定位",
      url: "https://...",
-     access: "开放 / 联系销售 / ...",
+     access: "open",           // AccessType: open | freemium | application | sales
+     client: "web",            // ClientType: web 云端 | desktop 桌面端 | mobile 移动端 | cross 全平台
      owner: "何龙",
      status: "completed",      // completed | in-progress
      category: "agent",        // 见 ProductCategory 类型
@@ -142,6 +143,11 @@ sage-research/
 
 > 每次有意义的变更合并到 main 时追加。**最新在上**。
 > 日期 YYYY-MM-DD;作者用中文名;类型 `feat` 新增 / `fix` 修复 / `docs` 文档 / `refactor` 重构 / `chore` 杂项 / `style` 样式
+
+### 2026-06-12 · 何龙
+- fix: 修正 QClaw 定位 — 此前被误写成「法律 AI Agent」,据报告实为「通用桌面自动化 Agent(微信指令驱动本地电脑,对标 OpenClaw)」,与法律无关
+- feat: 产品表格新增「客户端」列 — `ClientType`(web 云端 / desktop 桌面端 / mobile 移动端 / cross 全平台)+ `CLIENT_LABEL`,Product 接口加 `client` 字段,ProductGrid 加列(带平台图标的中性 chip)。分类依据各报告平台信号:CodeBuddy/QClaw/DuMate/Helio=桌面端,Monday/Marvis=全平台,其余=云端
+- chore: 复核并发会话补录的 17-24 共 8 款定位,除 QClaw 外均与报告吻合
 
 ### 2026-06-10 · 何龙
 - feat: 补齐最后 2 款产品 Helio(25) + OmniWork(26)— 这两款未登记在 `表格.md`,但 audits 已有完整报告。报告(md+html+figs)迁入 `public/products/`,products.ts 追加 2 条,凑齐 26 款全集
