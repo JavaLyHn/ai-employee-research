@@ -148,6 +148,7 @@ sage-research/
 - fix: 修正 QClaw 定位 — 此前被误写成「法律 AI Agent」,据报告实为「通用桌面自动化 Agent(微信指令驱动本地电脑,对标 OpenClaw)」,与法律无关
 - feat: 产品表格新增「客户端」列 — `ClientType`(web 云端 / desktop 桌面端 / mobile 移动端 / cross 全平台)+ `CLIENT_LABEL`,Product 接口加 `client` 字段,ProductGrid 加列(带平台图标的中性 chip)。分类依据各报告平台信号:CodeBuddy/QClaw/DuMate/Helio=桌面端,Monday/Marvis=全平台,其余=云端
 - chore: 复核并发会话补录的 17-24 共 8 款定位,除 QClaw 外均与报告吻合
+- fix: 逐条核对全部 26 款定位的正确性,修正 3 处与报告不符 + 1 处冗余:Kuse「AI GTM/Sales Automation」→「AI 同事协作平台」(官网核心定位 AI coworker,非销售专用);Moxt「AI 客户互动」→「多角色 AI 同事协作工作区」(核心是 AI Teammates/Workspace);Serus「AI Agent/企业自动化」→「面向物业管理的 AI Agent 自动化平台」(官网 Hero: Purpose built for property managers);Octok 去掉中英重复。其余 22 款经核对与报告一致(Kaito 报告被 Cloudflare 拦截,定位按外部常识保留)
 
 ### 2026-06-10 · 何龙
 - feat: 补齐最后 2 款产品 Helio(25) + OmniWork(26)— 这两款未登记在 `表格.md`,但 audits 已有完整报告。报告(md+html+figs)迁入 `public/products/`,products.ts 追加 2 条,凑齐 26 款全集
