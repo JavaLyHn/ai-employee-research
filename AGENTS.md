@@ -144,6 +144,10 @@ sage-research/
 > 每次有意义的变更合并到 main 时追加。**最新在上**。
 > 日期 YYYY-MM-DD;作者用中文名;类型 `feat` 新增 / `fix` 修复 / `docs` 文档 / `refactor` 重构 / `chore` 杂项 / `style` 样式
 
+### 2026-06-20 · 何龙
+- feat: 补录 4 款产品(27-30)— Ramp / Sandstone / Minerva / Concat,均含完整报告(md+html+figs)迁入 `public/products/`,products.ts 追加 4 条,凑齐 30 款。定位/官网/类别/access/client 均据各报告实测填写:access 取自页面真实入口信号(Ramp/Minerva/Concat=有免费版自助注册,Sandstone 仅 Book a Demo=联系销售);4 款均为浏览器云端 SaaS → client=web;Ramp/Sandstone 归 Agent 协作(领域产品但内嵌 AI agent),Minerva/Concat 归营销
+- chore: 本批为公开页审计(竞品调研惯例,未登录),各报告 §1.2 已透明标注「公开页 only」;Minerva 综合分析曾因会话限额失败,用 reuse 模式补跑且未覆盖任何已成功内容
+
 ### 2026-06-12 · 何龙
 - fix: 修正 QClaw 定位 — 此前被误写成「法律 AI Agent」,据报告实为「通用桌面自动化 Agent(微信指令驱动本地电脑,对标 OpenClaw)」,与法律无关
 - feat: 产品表格新增「客户端」列 — `ClientType`(web 云端 / desktop 桌面端 / mobile 移动端 / cross 全平台)+ `CLIENT_LABEL`,Product 接口加 `client` 字段,ProductGrid 加列(带平台图标的中性 chip)。分类依据各报告平台信号:CodeBuddy/QClaw/DuMate/Helio=桌面端,Monday/Marvis=全平台,其余=云端
